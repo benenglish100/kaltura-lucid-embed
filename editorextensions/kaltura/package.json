@@ -1,0 +1,21 @@
+{
+    "name": "kaltura-video-embed",
+    "version": "1.0.0",
+    "description": "Embed Kaltura video inline on a Lucidspark board.",
+    "scripts": {
+        "build": "webpack",
+        "typecheck": "tsc --noEmit",
+        "pretest": "tsc --outDir test-build --declaration false",
+        "test": "node test/parser.test.js"
+    },
+    "devDependencies": {
+        "raw-loader": "^4.0.2",
+        "ts-loader": "^9.2.6",
+        "typescript": "^5.9.3",
+        "webpack": "^5.64.4",
+        "webpack-cli": "^4.9.1"
+    },
+    "dependencies": {
+        "lucid-extension-sdk": "^1.2.6"
+    }
+}

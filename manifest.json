@@ -1,0 +1,46 @@
+{
+  "id": "8db0b987-2dff-4a99-a2f3-ab2a646aed13",
+  "version": "1.0.7",
+  "name": "kaltura-video-embed",
+  "author": "Kaltura",
+  "extensions": [
+    {
+      "name": "kaltura",
+      "title": "Kaltura Video",
+      "description": "Embed and play Kaltura video inline on a Lucidspark board. Paste a Kaltura embed code.",
+      "products": [
+        "spark"
+      ],
+      "codePath": "editorextensions/kaltura/bin/extension.js",
+      "scopes": [
+        "READ",
+        "WRITE",
+        "SHOW_MODAL",
+        "NETWORK"
+      ]
+    }
+  ],
+  "shapeLibraries": [],
+  "dataConnectors": [],
+  "settings": [
+    {
+      "name": "partnerId",
+      "label": "Kaltura Partner ID",
+      "description": "Your Kaltura account (Partner) ID. Find it in the KMC under Settings ▸ Integration Settings. Used as a fallback partner ID when a pasted player URL does not already contain one. Full embed codes are self-contained and do not need this.",
+      "type": "string"
+    },
+    {
+      "name": "defaultPlayerId",
+      "label": "Default Player ID (uiConf ID)",
+      "description": "The default Kaltura player / uiConf ID to use when a pasted player URL does not specify one. Find player IDs in the KMC under Studio.",
+      "type": "string"
+    },
+    {
+      "name": "playerDomain",
+      "label": "Player CDN Domain (optional)",
+      "description": "The Kaltura player CDN host to embed from. Leave blank to use the default (cdnapisec.kaltura.com).",
+      "type": "string",
+      "default": "cdnapisec.kaltura.com"
+    }
+  ]
+}

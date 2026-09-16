@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="https://lucid.app/public-styles.css">
+    <style>
+        html, body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #20242c;
+            background: #ffffff;
+        }
+        .wrap { padding: 16px 20px; box-sizing: border-box; }
+        h2 { font-size: 15px; margin: 0 0 4px; }
+        p.help { font-size: 12px; color: #5a6470; margin: 0 0 12px; line-height: 1.45; }
+        textarea {
+            width: 100%;
+            height: 132px;
+            box-sizing: border-box;
+            resize: vertical;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 12px;
+            padding: 8px;
+            border: 1px solid #c6ccd4;
+            border-radius: 4px;
+        }
+        .error {
+            color: #c0392b;
+            font-size: 12px;
+            margin: 8px 0 0;
+            min-height: 16px;
+            line-height: 1.4;
+        }
+        .buttons { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+        .examples { font-size: 11px; color: #7a828c; margin-top: 10px; line-height: 1.5; }
+        .examples code { background: #f2f4f7; padding: 1px 4px; border-radius: 3px; word-break: break-all; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h2>Paste your Kaltura embed code</h2>
+        <p class="help">
+            Paste your Kaltura <strong>embed code</strong> — the <code>&lt;iframe&gt;</code> snippet from
+            <strong>Share ▸ Embed</strong> in MediaSpace or the KMC. The video will appear on your board and
+            play in place.
+        </p>
+        <textarea id="input" placeholder="&lt;iframe id=&quot;kaltura_player&quot; src='https://cdnapisec.kaltura.com/p/…/embedPlaykitJs/uiconf_id/…?iframeembed=true&amp;entry_id=…'&gt;&lt;/iframe&gt;"></textarea>
+        <p id="error" class="error"></p>
+        <div class="buttons">
+            <button id="cancel" class="lucid-styling secondary">Cancel</button>
+            <button id="add" class="lucid-styling primary">Add video</button>
+        </div>
+    </div>
+
+    <script>
+        var input = document.getElementById('input');
+        var errorEl = document.getElementById('error');
+
+        function submit() {
+            errorEl.textContent = '';
+            parent.postMessage({action: 'submit', value: input.value}, '*');
+        }
+
+        document.getElementById('add').addEventListener('click', submit);
+        document.getElementById('cancel').addEventListener('click', function () {
+            parent.postMessage({action: 'cancel'}, '*');
+        });
+
+        // Cmd/Ctrl+Enter submits.
+        input.addEventListener('keydown', function (e) {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+                submit();
+            }
+        });
+
+        // Messages back from the extension (e.g. parse errors).
+        window.addEventListener('message', function (e) {
+            var data = e.data || {};
+            if (data.action === 'error') {
+                errorEl.textContent = data.message || 'Something went wrong.';
+            }
+        });
+
+        input.focus();
+    </script>
+</body>
+</html>
