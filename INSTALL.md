@@ -1,5 +1,7 @@
 # First install — screen-by-screen
 
+> **Disclaimer:** This integration is **not an official Kaltura application**. It is provided **as-is** and comes with **no guarantee, warranty, or official Kaltura support**.
+
 A short walkthrough of what people see the first time. There are two roles:
 
 - **Admin** (installs the extension and enters the Kaltura Partner ID) — done once per account.

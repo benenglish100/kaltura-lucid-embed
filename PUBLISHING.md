@@ -1,5 +1,7 @@
 # Publishing to the Lucid Marketplace
 
+> **Disclaimer:** This integration is **not an official Kaltura application**. It is provided **as-is** with **no guarantee, warranty, or official Kaltura support**.
+
 How to get this extension from your local machine into Lucid's Marketplace. Everything happens
 through your **Lucid Developer Portal login** — no API key.
 

@@ -1,5 +1,7 @@
 # Kaltura Video for Lucidspark
 
+> **Disclaimer:** This project is **not an official Kaltura application or product**. It is provided **as-is**, for community use, and comes with **no warranty, guarantee, or official support** from Kaltura Inc.
+
 A Lucid **editor extension** that embeds Kaltura video **inline on a Lucidspark board** — the
 video plays in place, without opening a new page.
 
